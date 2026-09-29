@@ -1,0 +1,65 @@
+{
+  "name": "cypress-lighthouse-audit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Lighthouse budgets for Cypress 16+ on the native Cypress Chrome session, with Node-side secrets and no Cypress.env().",
+  "keywords": [
+    "cypress",
+    "cypress-plugin",
+    "lighthouse",
+    "performance",
+    "core-web-vitals"
+  ],
+  "license": "MIT",
+  "author": "Ognen Lazarevski",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/node/index.d.ts",
+        "default": "./dist/node/index.js"
+      },
+      "require": {
+        "types": "./dist/node/index.d.cts",
+        "default": "./dist/node/index.cjs"
+      }
+    },
+    "./commands": {
+      "import": {
+        "types": "./dist/commands.d.ts",
+        "default": "./dist/commands.js"
+      },
+      "require": {
+        "types": "./dist/commands.d.cts",
+        "default": "./dist/commands.cjs"
+      }
+    }
+  },
+  "main": "./dist/node/index.cjs",
+  "types": "./dist/node/index.d.cts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "prepare": "tsup",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm test && npm run build"
+  },
+  "peerDependencies": {
+    "cypress": ">=15.17.0 <17",
+    "lighthouse": ">=12.0.0 <14"
+  },
+  "devDependencies": {
+    "@types/node": "22.13.0",
+    "cypress": "16.1.0",
+    "lighthouse": "13.4.1",
+    "tsup": "8.5.1",
+    "typescript": "5.8.3",
+    "vitest": "4.1.11"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
