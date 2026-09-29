@@ -17,7 +17,7 @@ export interface LighthouseCommandOptions {
   config?: Record<string, unknown>;
   /** Fail the test when a threshold is missed. Defaults to `true`. */
   failOnBudget?: boolean;
-  /** `cy.task` timeout in ms. Defaults to 120000. */
+  /** `cy.task` timeout in ms. Defaults to 180000 (the first audit also loads Lighthouse). */
   timeout?: number;
 }
 

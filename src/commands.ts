@@ -16,7 +16,7 @@ declare global {
 }
 
 Cypress.Commands.add('lighthouse', (thresholds: Thresholds, options: LighthouseCommandOptions = {}) => {
-  const { failOnBudget = true, timeout = 120_000, ...audit } = options;
+  const { failOnBudget = true, timeout = 180_000, ...audit } = options;
 
   return cy.url({ log: false }).then((url) => {
     const args: LighthouseTaskArgs = { url, thresholds, ...audit };

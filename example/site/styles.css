@@ -1,0 +1,40 @@
+:root {
+  font-family: system-ui, sans-serif;
+  color: #1a1a1a;
+  background: #fff;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 1rem;
+}
+
+nav a {
+  margin-right: 1rem;
+  color: #0b57d0;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.products li {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: 0;
+  border-radius: 4px;
+  color: #fff;
+  background: #0b57d0;
+  font: inherit;
+  cursor: pointer;
+}

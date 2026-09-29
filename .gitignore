@@ -2,4 +2,7 @@ node_modules/
 dist/
 coverage/
 cypress/reports/
+example/reports/
+example/cypress/screenshots/
+example/cypress/videos/
 *.log

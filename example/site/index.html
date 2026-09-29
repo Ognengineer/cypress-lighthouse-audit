@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Static page used to verify cypress-lighthouse-audit end to end." />
+    <title>cypress-lighthouse-audit example</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Example shop</h1>
+      <nav aria-label="Main">
+        <a href="/">Home</a>
+        <a href="/#products">Products</a>
+      </nav>
+    </header>
+    <main>
+      <section id="products" aria-labelledby="products-title">
+        <h2 id="products-title">Products</h2>
+        <ul class="products">
+          <li>
+            <img src="/product.svg" alt="Apples" width="160" height="120" />
+            <h3>Apples</h3>
+            <p>Fresh apples, 1 kg.</p>
+            <button type="button">Add to cart</button>
+          </li>
+          <li>
+            <img src="/product.svg" alt="Pears" width="160" height="120" />
+            <h3>Pears</h3>
+            <p>Sweet pears, 1 kg.</p>
+            <button type="button">Add to cart</button>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer>
+      <p>Used only by the cypress-lighthouse-audit example.</p>
+    </footer>
+  </body>
+</html>

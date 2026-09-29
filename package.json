@@ -1,7 +1,6 @@
 {
   "name": "cypress-lighthouse-audit",
   "version": "0.1.0",
-  "private": true,
   "description": "Lighthouse budgets for Cypress 16+ on the native Cypress Chrome session, with Node-side secrets and no Cypress.env().",
   "keywords": [
     "cypress",
@@ -11,7 +10,15 @@
     "core-web-vitals"
   ],
   "license": "MIT",
-  "author": "Ognen Lazarevski",
+  "author": "Ognen Lazarevski <lazarevski86@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ognengineer/cypress-lighthouse-audit.git"
+  },
+  "homepage": "https://github.com/Ognengineer/cypress-lighthouse-audit#readme",
+  "bugs": {
+    "url": "https://github.com/Ognengineer/cypress-lighthouse-audit/issues"
+  },
   "type": "module",
   "exports": {
     ".": {
@@ -45,7 +52,8 @@
     "prepare": "tsup",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "check": "npm run typecheck && npm test && npm run build"
+    "check": "npm run typecheck && npm test && npm run build",
+    "example": "npm run build && node example/run.mjs"
   },
   "peerDependencies": {
     "cypress": ">=15.17.0 <17",
@@ -61,5 +69,11 @@
   },
   "engines": {
     "node": ">=22"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "cypress",
+      "esbuild"
+    ]
   }
 }

@@ -9,11 +9,19 @@ Run Lighthouse budgets from Cypress 16+ tests against the Chrome session Cypress
 
 ## Install
 
-The package is private (`"private": true`), so install it from Git. The `prepare` script builds it on install.
+```bash
+pnpm add -D cypress-lighthouse-audit lighthouse
+```
+
+`lighthouse` is a peer dependency. Pin the version you want, for example `lighthouse@13.4.1`.
+
+To install straight from GitHub instead:
 
 ```bash
-pnpm add -D git+ssh://git@github.com/<your-account>/cypress-lighthouse-audit.git#v0.1.0 lighthouse@13.4.1
+pnpm add -D github:Ognengineer/cypress-lighthouse-audit#v0.1.0 lighthouse
 ```
+
+The Git install builds the package through its `prepare` script. If pnpm 10 skips that script, add `"pnpm": { "onlyBuiltDependencies": ["cypress-lighthouse-audit"] }` to your `package.json` and install again.
 
 ## Setup
 
@@ -78,7 +86,7 @@ A key Lighthouse does not report fails the test with "not reported by Lighthouse
 | `flags` | `{}` | Lighthouse flags, for example `{ onlyCategories: [...] }` |
 | `config` | `{}` | Lighthouse config; `config.settings` overrides the preset, for example `{ settings: { throttlingMethod: 'provided' } }` |
 | `failOnBudget` | `true` | Set `false` to only yield the result |
-| `timeout` | `120000` | `cy.task` timeout in ms |
+| `timeout` | `180000` | `cy.task` timeout in ms; the first audit in a run also loads Lighthouse |
 
 The command yields `{ url, lighthouseVersion, formFactor, passed, results, failures, reports }`.
 
@@ -107,9 +115,28 @@ on('before:browser:launch', (browser, launchOptions) => {
 on('task', { ...myTasks, ...lighthouse.tasks });
 ```
 
+## Example
+
+`example/` is a small Cypress project that audits a static page (`example/site/`) on desktop and mobile:
+
+```bash
+pnpm example
+```
+
+`example/run.mjs` serves the page on `http://127.0.0.1:4173`, runs Cypress in Chrome, and checks that Lighthouse sent the header returned by the Node-side `headers` option. Reports are written to `example/reports/`. Override the defaults with `EXAMPLE_BROWSER`, `EXAMPLE_PORT` and `EXAMPLE_SPEC` (a spec path relative to `example/`).
+
 ## Development
 
 ```bash
-CYPRESS_INSTALL_BINARY=0 pnpm install
-pnpm check   # typecheck + unit tests + build
+pnpm install
+pnpm check     # typecheck + unit tests + build
+pnpm example   # real audits in Chrome
+```
+
+## Publishing
+
+```bash
+npm login
+npm publish    # `prepare` builds dist/; only dist/ is packed ("files")
+git tag vX.Y.Z && git push --tags
 ```
