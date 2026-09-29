@@ -132,11 +132,3 @@ pnpm install
 pnpm check     # typecheck + unit tests + build
 pnpm example   # real audits in Chrome
 ```
-
-## Publishing
-
-```bash
-npm login
-npm publish    # `prepare` builds dist/; only dist/ is packed ("files")
-git tag vX.Y.Z && git push --tags
-```
