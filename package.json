@@ -1,6 +1,6 @@
 {
   "name": "cypress-lighthouse-audit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Lighthouse budgets for Cypress 16+ on the native Cypress Chrome session, with Node-side secrets and no Cypress.env().",
   "keywords": [
     "cypress",

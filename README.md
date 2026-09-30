@@ -18,7 +18,7 @@ pnpm add -D cypress-lighthouse-audit lighthouse
 To install straight from GitHub instead:
 
 ```bash
-pnpm add -D github:Ognengineer/cypress-lighthouse-audit#v0.1.0 lighthouse
+pnpm add -D github:Ognengineer/cypress-lighthouse-audit#v0.1.1 lighthouse
 ```
 
 The Git install builds the package through its `prepare` script. If pnpm 10 skips that script, add `"pnpm": { "onlyBuiltDependencies": ["cypress-lighthouse-audit"] }` to your `package.json` and install again.
