@@ -18,6 +18,13 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-binary-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+      # pnpm may skip Cypress's postinstall script, so download the binary explicitly.
+      - run: pnpm exec cypress install
+      - run: pnpm exec cypress verify
       - run: pnpm check
       - run: pnpm example
       - if: always()
